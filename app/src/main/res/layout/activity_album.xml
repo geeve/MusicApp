@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/album"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:padding="@dimen/album_padding"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_album1"
+                        android:onClick="albumDetail1"
+                        style="@style/album_imga"
+                        android:src="@drawable/album1" />
+                    <TextView
+                        android:id="@+id/tv_album1"
+                        android:text="@string/album_1"
+                        style="@style/album_text" />
+                    <TextView
+                        android:id="@+id/tv_album1_songer"
+                        android:text="@string/songer_1"
+                        style="@style/album_text" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:padding="@dimen/album_padding"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:onClick="albumDetail2"
+                        style="@style/album_imga"
+                        android:src="@drawable/album2" />
+                    <TextView
+                        android:id="@+id/tv_album2"
+                        android:text="@string/album_2"
+                        style="@style/album_text"  />
+                    <TextView
+                        android:id="@+id/tv_album1_songer2"
+                        android:text="@string/songer_2"
+                        style="@style/album_text"  />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:padding="@dimen/album_padding"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:onClick="albumDetail3"
+                        style="@style/album_imga"
+                        android:src="@drawable/album3" />
+                    <TextView
+                        android:id="@+id/tv_album3"
+                        android:text="@string/album_3"
+                        style="@style/album_text"  />
+                    <TextView
+                        android:id="@+id/tv_album1_songer3"
+                        android:text="@string/songer_3"
+                        style="@style/album_text"  />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:padding="@dimen/album_padding"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:onClick="albumDetail4"
+                        style="@style/album_imga"
+                        android:src="@drawable/album4" />
+                    <TextView
+                        android:id="@+id/tv_album4"
+                        android:text="@string/album_4"
+                        style="@style/album_text"  />
+                    <TextView
+                        android:id="@+id/tv_album1_songer4"
+                        android:text="@string/songer_4"
+                        style="@style/album_text"  />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

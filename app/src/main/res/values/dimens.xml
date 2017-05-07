@@ -1,0 +1,16 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="album_padding">16dp</dimen>
+    <dimen name="album_detail_padding">24dp</dimen>
+    <dimen name="album_song_list_padding">24dp</dimen>
+    <dimen name="album_songlist_text_paddign">12dp</dimen>
+    <dimen name="album_songlist_text_size">22sp</dimen>
+    <dimen name="record_width">55dp</dimen>
+    <dimen name="play_image">49dp</dimen>
+    <dimen name="songer_height">82dp</dimen>
+    <dimen name="songer_margin">12dp</dimen>
+    <dimen name="songer_detail_margin">8dp</dimen>
+</resources>

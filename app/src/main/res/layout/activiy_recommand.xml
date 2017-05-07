@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/recommand"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/recommand_song1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_song_name1"
+                    style="@style/RecommandMusic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recommand_song_1" />
+
+                <TextView
+                    android:id="@+id/tv_songer1"
+                    style="@style/RecommandSonger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/songer_1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/recommand_song2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_song_name2"
+                    style="@style/RecommandMusic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recommand_song_2" />
+
+                <TextView
+                    android:id="@+id/tv_songer2"
+                    style="@style/RecommandSonger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/songer_2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/recommand_song3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_song_name3"
+                    style="@style/RecommandMusic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recommand_song_3" />
+
+                <TextView
+                    android:id="@+id/tv_songer3"
+                    style="@style/RecommandSonger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/songer_3" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/recommand_song4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_song_name4"
+                    style="@style/RecommandMusic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recommand_song_4" />
+
+                <TextView
+                    android:id="@+id/tv_songer4"
+                    style="@style/RecommandSonger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/songer_4" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/recommand_song5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_song_name5"
+                    style="@style/RecommandMusic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recommand_song_5" />
+
+                <TextView
+                    android:id="@+id/tv_songer5"
+                    style="@style/RecommandSonger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/songer_5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/recommand_song6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_song_name6"
+                    style="@style/RecommandMusic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recommand_song_6" />
+
+                <TextView
+                    android:id="@+id/tv_songer6"
+                    style="@style/RecommandSonger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/songer_6" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/recommand_song7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_song_name7"
+                    style="@style/RecommandMusic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recommand_song_7" />
+
+                <TextView
+                    android:id="@+id/tv_songer7"
+                    style="@style/RecommandSonger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/songer_7" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

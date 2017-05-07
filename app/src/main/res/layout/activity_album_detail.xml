@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/iv_album_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/album_detail_padding"
+            android:src="@drawable/album1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_album_title"
+            style="@style/RecommandMusic"
+            android:text="@string/album_1" />
+
+        <TextView
+            android:id="@+id/tv_album_songer"
+            style="@style/RecommandSonger"
+            android:text="歌手1" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/songlist_background"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/album_song_list_padding">
+
+                <TextView
+                    style="@style/songlist_text"
+                    android:text="@string/song_1" />
+
+                <TextView
+                    style="@style/songlist_text"
+                    android:text="@string/song_2" />
+
+                <TextView
+                    style="@style/songlist_text"
+                    android:text="@string/song_3" />
+
+                <TextView
+                    style="@style/songlist_text"
+                    android:text="@string/song_4"/>
+
+                <TextView
+                    style="@style/songlist_text"
+                    android:text="@string/song_5" />
+
+                <TextView
+                    style="@style/songlist_text"
+                    android:text="@string/song_6" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>
