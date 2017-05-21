@@ -5,8 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -22,12 +23,18 @@ public class MainActivity extends AppCompatActivity {
 
     //存放推荐歌曲列表的ArrayList
     private ArrayList<RecommandSong> mRecommandSongs = new ArrayList<RecommandSong>();
+    //存放歌手信息的ArrayList
+    private ArrayList<Musician> mMusicians = new ArrayList<Musician>();
+    //存放专辑列表ArrayList
+    private ArrayList<Album> mAlbums = new ArrayList<Album>();
 
 
     /***
-     * 实例化各ArrayList
+     * 初始化推荐歌曲页面
      */
-    private void createObj(){
+    private void createRecommandSong(){
+
+
         mRecommandSongs.add(new RecommandSong("推荐歌曲1","歌手1"));
         mRecommandSongs.add(new RecommandSong("推荐歌曲2","歌手2"));
         mRecommandSongs.add(new RecommandSong("推荐歌曲3","歌手3"));
@@ -36,6 +43,89 @@ public class MainActivity extends AppCompatActivity {
         mRecommandSongs.add(new RecommandSong("推荐歌曲6","歌手6"));
         mRecommandSongs.add(new RecommandSong("推荐歌曲7","歌手7"));
 
+        RecommandSongAdapter recommandSongAdapter = new RecommandSongAdapter(this,mRecommandSongs);
+
+        ListView listView = (ListView)findViewById(R.id.recommand);
+
+        listView.setAdapter(recommandSongAdapter);
+
+        /***
+         * 绑定每项点击事件
+         */
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent intent = new Intent(MainActivity.this,PlayingActivity.class);
+
+                playMusicName = mRecommandSongs.get(i).getmRecommandSongName();
+                playSonger = mRecommandSongs.get(i).getmRecommandSonger();
+
+                intent.putExtra("songName",playMusicName);
+                intent.putExtra("songer",playSonger);
+
+                startActivityForResult(intent,REQUEST_CODE);
+            }
+        });
+    }
+
+    /***
+     * 初始化音乐人页面
+     */
+    private void createMusician(){
+        mMusicians.add(new Musician(getResources().getString(R.string.ldh),getResources().getString(R.string.ldh_detail),R.drawable.ldh));
+        mMusicians.add(new Musician(getResources().getString(R.string.zgr),getResources().getString(R.string.zgr_detail),R.drawable.zgr));
+        mMusicians.add(new Musician(getResources().getString(R.string.myf),getResources().getString(R.string.myf_detail),R.drawable.myf));
+        mMusicians.add(new Musician(getResources().getString(R.string.hjj),getResources().getString(R.string.hjj_detail),R.drawable.hjj));
+        mMusicians.add(new Musician(getResources().getString(R.string.zjl),getResources().getString(R.string.zjl_detail),R.drawable.zjl));
+
+        MusicianAdapter musicianAdapter = new MusicianAdapter(this,mMusicians);
+
+        ListView listView = (ListView) findViewById(R.id.musician);
+
+        listView.setAdapter(musicianAdapter);
+
+    }
+
+    /***
+     * 初始化专辑页面
+     */
+    private void creatAlbum(){
+        mAlbums.add(new Album(getResources().getString(R.string.album_1),getResources().getString(R.string.songer_1),R.drawable.album1));
+        mAlbums.add(new Album(getResources().getString(R.string.album_2),getResources().getString(R.string.songer_2),R.drawable.album2));
+        mAlbums.add(new Album(getResources().getString(R.string.album_3),getResources().getString(R.string.songer_3),R.drawable.album3));
+        mAlbums.add(new Album(getResources().getString(R.string.album_4),getResources().getString(R.string.songer_4),R.drawable.album4));
+
+        AlbumAdapter albumAdapter = new AlbumAdapter(this,mAlbums);
+
+        GridView gridView = (GridView) findViewById(R.id.album);
+
+        gridView.setAdapter(albumAdapter);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(MainActivity.this,AlbumDetailActivity.class);
+
+                intent.putExtra("albumImage",mAlbums.get(i).getmImgResourseId());
+                intent.putExtra("album",mAlbums.get(i).getmAlbumName());
+                intent.putExtra("albumSonger",mAlbums.get(i).getmAlbumSonger());
+
+                startActivityForResult(intent,REQUEST_CODE);
+            }
+        });
+    }
+
+    /***
+     * 实例化各ArrayList
+     */
+    private void createObj(){
+        //生成推荐歌曲页面
+        createRecommandSong();
+        //生成音乐人列表
+        createMusician();
+        //生成专辑列表
+        creatAlbum();
     }
 
     @Override
@@ -48,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
         TabHost th = (TabHost) findViewById(R.id.tb_tabhost);
         th.setup();
         LayoutInflater i = LayoutInflater.from(this);
-        i.inflate(R.layout.activiy_recommand2,th.getTabContentView());
+        i.inflate(R.layout.activiy_recommand,th.getTabContentView());
         i.inflate(R.layout.activity_album,th.getTabContentView());
         //i.inflate(R.layout.activity_songlist,th.getTabContentView());
         i.inflate(R.layout.activity_musician,th.getTabContentView());
@@ -61,31 +151,6 @@ public class MainActivity extends AppCompatActivity {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         createObj();
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        RecommandSongAdapter recommandSongAdapter = new RecommandSongAdapter(this,mRecommandSongs);
-
-        ListView listView = (ListView)findViewById(R.id.recommand);
-
-        listView.setAdapter(recommandSongAdapter);
-
-
-//        LinearLayout recommandSong1 = (LinearLayout) findViewById(R.id.recommand_song1);
-//        recommandSong1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(MainActivity.this,PlayingActivity.class);
-//                TextView songName = (TextView) findViewById(R.id.tv_song_name1);
-//                TextView songer = (TextView) findViewById(R.id.tv_songer1);
-//
-//                playMusicName = songName.getText().toString();
-//                playSonger = songer.getText().toString();
-//
-//                i.putExtra("songName",playMusicName);
-//                i.putExtra("songer",playSonger);
-//
-//
-//                startActivityForResult(i,REQUEST_CODE);
-//            }
-//        });
 
 
         TextView tvDetail = (TextView) findViewById(R.id.tv_detail);
@@ -100,7 +165,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(i,REQUEST_CODE);
             }
         });
-
 
 
     }
@@ -133,54 +197,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void albumDetail1(View view){
-        Intent i = new Intent(this,AlbumDetailActivity.class);
-
-        i.putExtra("albumImage",R.drawable.album1);
-        TextView album = (TextView) findViewById(R.id.tv_album1);
-        TextView albumSonger = (TextView) findViewById(R.id.tv_album1_songer);
-
-        i.putExtra("album",album.getText().toString());
-        i.putExtra("albumSonger",albumSonger.getText().toString());
-
-        startActivity(i);
-    }
-
-    public void albumDetail2(View view){
-        Intent i = new Intent(this,AlbumDetailActivity.class);
-
-        i.putExtra("albumImage",R.drawable.album2);
-        TextView album = (TextView) findViewById(R.id.tv_album2);
-        TextView albumSonger = (TextView) findViewById(R.id.tv_album1_songer2);
-
-        i.putExtra("album",album.getText().toString());
-        i.putExtra("albumSonger",albumSonger.getText().toString());
-
-        startActivity(i);
-    }
-    public void albumDetail3(View view){
-        Intent i = new Intent(this,AlbumDetailActivity.class);
-
-        i.putExtra("albumImage",R.drawable.album3);
-        TextView album = (TextView) findViewById(R.id.tv_album3);
-        TextView albumSonger = (TextView) findViewById(R.id.tv_album1_songer3);
-
-        i.putExtra("album",album.getText().toString());
-        i.putExtra("albumSonger",albumSonger.getText().toString());
-
-        startActivity(i);
-    }
-    public void albumDetail4(View view){
-        Intent i = new Intent(this,AlbumDetailActivity.class);
-
-        i.putExtra("albumImage",R.drawable.album4);
-        TextView album = (TextView) findViewById(R.id.tv_album4);
-        TextView albumSonger = (TextView) findViewById(R.id.tv_album1_songer4);
-
-        i.putExtra("album",album.getText().toString());
-        i.putExtra("albumSonger",albumSonger.getText().toString());
-
-        startActivity(i);
-    }
 
 }
