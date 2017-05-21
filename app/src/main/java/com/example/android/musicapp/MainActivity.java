@@ -1,18 +1,17 @@
 package com.example.android.musicapp;
 
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
+import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import static com.example.android.musicapp.R.drawable.playing;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +19,24 @@ public class MainActivity extends AppCompatActivity {
     private String playSonger;
     private boolean playing = false;
     private static final int REQUEST_CODE = 10;
+
+    //存放推荐歌曲列表的ArrayList
+    private ArrayList<RecommandSong> mRecommandSongs = new ArrayList<RecommandSong>();
+
+
+    /***
+     * 实例化各ArrayList
+     */
+    private void createObj(){
+        mRecommandSongs.add(new RecommandSong("推荐歌曲1","歌手1"));
+        mRecommandSongs.add(new RecommandSong("推荐歌曲2","歌手2"));
+        mRecommandSongs.add(new RecommandSong("推荐歌曲3","歌手3"));
+        mRecommandSongs.add(new RecommandSong("推荐歌曲4","歌手4"));
+        mRecommandSongs.add(new RecommandSong("推荐歌曲5","歌手5"));
+        mRecommandSongs.add(new RecommandSong("推荐歌曲6","歌手6"));
+        mRecommandSongs.add(new RecommandSong("推荐歌曲7","歌手7"));
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         TabHost th = (TabHost) findViewById(R.id.tb_tabhost);
         th.setup();
         LayoutInflater i = LayoutInflater.from(this);
-        i.inflate(R.layout.activiy_recommand,th.getTabContentView());
+        i.inflate(R.layout.activiy_recommand2,th.getTabContentView());
         i.inflate(R.layout.activity_album,th.getTabContentView());
         //i.inflate(R.layout.activity_songlist,th.getTabContentView());
         i.inflate(R.layout.activity_musician,th.getTabContentView());
@@ -41,142 +58,35 @@ public class MainActivity extends AppCompatActivity {
         //th.addTab(th.newTabSpec("songlist").setIndicator(getString(R.string.songlist)).setContent(R.id.songlist));
         th.addTab(th.newTabSpec("musician").setIndicator(getString(R.string.musician)).setContent(R.id.musician));
 
-        LinearLayout recommandSong1 = (LinearLayout) findViewById(R.id.recommand_song1);
-        recommandSong1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,PlayingActivity.class);
-                TextView songName = (TextView) findViewById(R.id.tv_song_name1);
-                TextView songer = (TextView) findViewById(R.id.tv_songer1);
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        createObj();
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        RecommandSongAdapter recommandSongAdapter = new RecommandSongAdapter(this,mRecommandSongs);
 
-                playMusicName = songName.getText().toString();
-                playSonger = songer.getText().toString();
+        ListView listView = (ListView)findViewById(R.id.recommand);
 
-                i.putExtra("songName",playMusicName);
-                i.putExtra("songer",playSonger);
+        listView.setAdapter(recommandSongAdapter);
 
 
-                startActivityForResult(i,REQUEST_CODE);
-            }
-        });
+//        LinearLayout recommandSong1 = (LinearLayout) findViewById(R.id.recommand_song1);
+//        recommandSong1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(MainActivity.this,PlayingActivity.class);
+//                TextView songName = (TextView) findViewById(R.id.tv_song_name1);
+//                TextView songer = (TextView) findViewById(R.id.tv_songer1);
+//
+//                playMusicName = songName.getText().toString();
+//                playSonger = songer.getText().toString();
+//
+//                i.putExtra("songName",playMusicName);
+//                i.putExtra("songer",playSonger);
+//
+//
+//                startActivityForResult(i,REQUEST_CODE);
+//            }
+//        });
 
-        LinearLayout recommandSong2 = (LinearLayout) findViewById(R.id.recommand_song2);
-        recommandSong2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,PlayingActivity.class);
-                TextView songName = (TextView) findViewById(R.id.tv_song_name2);
-                TextView songer = (TextView) findViewById(R.id.tv_songer2);
-
-                playMusicName = songName.getText().toString();
-                playSonger = songer.getText().toString();
-
-                i.putExtra("songName",playMusicName);
-                i.putExtra("songer",playSonger);
-
-
-                startActivityForResult(i,REQUEST_CODE);
-            }
-        });
-
-        LinearLayout recommandSong3 = (LinearLayout) findViewById(R.id.recommand_song3);
-        recommandSong3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,PlayingActivity.class);
-                TextView songName = (TextView) findViewById(R.id.tv_song_name3);
-                TextView songer = (TextView) findViewById(R.id.tv_songer3);
-
-                playMusicName = songName.getText().toString();
-                playSonger = songer.getText().toString();
-
-                i.putExtra("songName",playMusicName);
-                i.putExtra("songer",playSonger);
-
-
-
-                startActivityForResult(i,REQUEST_CODE);
-            }
-        });
-
-        LinearLayout recommandSong4 = (LinearLayout) findViewById(R.id.recommand_song4);
-        recommandSong4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,PlayingActivity.class);
-                TextView songName = (TextView) findViewById(R.id.tv_song_name4);
-                TextView songer = (TextView) findViewById(R.id.tv_songer4);
-
-                playMusicName = songName.getText().toString();
-                playSonger = songer.getText().toString();
-
-                i.putExtra("songName",playMusicName);
-                i.putExtra("songer",playSonger);
-
-
-
-                startActivityForResult(i,REQUEST_CODE);
-            }
-        });
-
-        LinearLayout recommandSong5 = (LinearLayout) findViewById(R.id.recommand_song5);
-        recommandSong5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,PlayingActivity.class);
-                TextView songName = (TextView) findViewById(R.id.tv_song_name5);
-                TextView songer = (TextView) findViewById(R.id.tv_songer5);
-
-                playMusicName = songName.getText().toString();
-                playSonger = songer.getText().toString();
-
-                i.putExtra("songName",playMusicName);
-                i.putExtra("songer",playSonger);
-
-
-
-                startActivityForResult(i,REQUEST_CODE);
-            }
-        });
-
-        LinearLayout recommandSong6 = (LinearLayout) findViewById(R.id.recommand_song6);
-        recommandSong6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,PlayingActivity.class);
-                TextView songName = (TextView) findViewById(R.id.tv_song_name6);
-                TextView songer = (TextView) findViewById(R.id.tv_songer6);
-
-                playMusicName = songName.getText().toString();
-                playSonger = songer.getText().toString();
-
-                i.putExtra("songName",playMusicName);
-                i.putExtra("songer",playSonger);
-
-
-
-                startActivityForResult(i,REQUEST_CODE);
-            }
-        });
-
-        LinearLayout recommandSong7 = (LinearLayout) findViewById(R.id.recommand_song7);
-        recommandSong7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,PlayingActivity.class);
-                TextView songName = (TextView) findViewById(R.id.tv_song_name7);
-                TextView songer = (TextView) findViewById(R.id.tv_songer7);
-
-                playMusicName = songName.getText().toString();
-                playSonger = songer.getText().toString();
-
-                i.putExtra("songName",playMusicName);
-                i.putExtra("songer",playSonger);
-
-
-                startActivityForResult(i,REQUEST_CODE);
-            }
-        });
 
         TextView tvDetail = (TextView) findViewById(R.id.tv_detail);
         tvDetail.setOnClickListener(new View.OnClickListener(){
